@@ -1,5 +1,7 @@
+source ~/utils/functions.sh;
+
 alias utils-install='utils-update';
-alias utils-update='function _utils_update { cd ~/utils; git fetch; if [[ 0 < $# ]]; then git checkout $1; fi; git pull; }; _utils_update';
+alias utils-update='_utils_update';
 alias utils-version='cd ~/utils && git-current-tag'
 
 alias git-graph='git log --all --graph --date-order --oneline --decorate';
