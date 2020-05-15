@@ -3,18 +3,22 @@ function _utils_update {
 
   previous=$(_utils_version);
 
-  git fetch;
+  git fetch --quiet;
   if [[ 0 -lt $# ]]; then
-    git checkout "$1";
+    git checkout --quiet "$1" 2> /dev/null;
+    if [[ 0 -lt $? ]]; then
+      echo "Error: can't checkout $1";
+      return;
+    fi;
   else
-    git checkout master;
+    git checkout --quiet master 2> /dev/null;
   fi;
-  git pull;
+  git pull --quiet;
 
   current=$(_utils_version);
 
   if [ "$current" == "$previous" ]; then
-    echo "Utils is up-to-date and actualy in $previous";
+    echo "Utils is up-to-date and in $previous";
   else
     source ~/utils/aliases.sh;
     echo "Utils updated from $previous to $current.";
