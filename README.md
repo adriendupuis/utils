@@ -8,12 +8,13 @@ Aliases
 
 ### Install
 
-Utils must be installed in ~/Utils.
+Utils must be installed in ~/utils.
 
 1. `git clone https://github.com/adriendupuis/utils.git -b master ~/utils;`
 1. Add `source $HOME/utils/aliases.sh` to your .zshrc or .bashrc
 
-### Usage
+### Maintenance
 
-- `utils-update`: Update utils
-- `utils-install <version>`: Install a version of utils, the version can be a tag or a branch
+- `utils-update`: Update utils to last master release
+- `utils-install <version>`: Install a given version of Utils, the version can be a tag, a branch or a commit
+- `utils-version`: Get actual Utils version
