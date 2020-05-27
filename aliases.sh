@@ -11,3 +11,4 @@ if [ 'Darwin' == `uname` ]; then
 else
   alias ls='ls -halF --color';
 fi;
+alias mv-ln='function _mv_ln { mv $1 $2 && ln -s $2 $1 }; _mv_ln';
