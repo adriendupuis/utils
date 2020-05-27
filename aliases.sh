@@ -7,8 +7,8 @@ alias git-clean-local-branches='git fetch --quiet && git branch -vv | grep -v  "
 
 if [ 'Darwin' == `uname` ]; then
   # Mac OS X
-  alias ls='ls -GhalF@';
+  alias lsd='ls -GhalF@';
 else
-  alias ls='ls -halF --color';
+  alias lsd='ls -halF --color';
 fi;
 alias mv-ln='function _mv_ln { mv $1 $2 && ln -s $2 $1 }; _mv_ln';
