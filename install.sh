@@ -1,19 +1,19 @@
 # First installation script (just after having cloned the repository)
 
-source ~/utils/text.sh;
-ERROR="${TXT_FG_WHITE}${TXT_BG_RED}";
-WARNING="${TXT_FG_BLACK}${TXT_BG_YELLOW}";
-COMMENT="${TXT_FG_BLUE}";
-RESET=$TXT_RESET;
-
 if [[ "$1" =~ 'zsh' ]]; then
   rc='zshrc';
 elif [[ "$1" =~ 'bash' ]]; then
   rc='bashrc';
 else
-  echo "${ERROR}Error: Unsupported shell.${RESET}";
+  echo "Error: Unsupported shell.";
   exit 1;
 fi;
+
+source ~/utils/text.sh;
+ERROR="${TXT_FG_WHITE}${TXT_BG_RED}";
+WARNING="${TXT_FG_BLACK}${TXT_BG_YELLOW}";
+COMMENT="${TXT_FG_BLUE}";
+RESET=$TXT_RESET;
 
 if [[ -f ~/utils/rc/$rc ]]; then
   if [[ -z `grep "/utils/rc/$rc" ~/.$rc;` ]]; then
