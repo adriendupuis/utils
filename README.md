@@ -10,8 +10,7 @@ Aliases
 
 Utils must be installed in ~/utils.
 
-1. `git clone https://github.com/adriendupuis/utils.git -b master ~/utils;`
-1. Add `source $HOME/utils/aliases.sh` to your .zshrc or .bashrc
+To install, run `git clone https://github.com/adriendupuis/utils.git -b master ~/utils && ~/utils/install.sh $0;`
 
 ### Maintenance
 
