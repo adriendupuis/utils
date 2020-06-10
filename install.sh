@@ -1,6 +1,6 @@
 # First installation script (just after having cloned the repository)
 
-if [[ "$1" =~ 'zsh' ]]; then
+if [[ "${1//[^a-z]/}" =~ 'zsh' ]]; then
   rc='zshrc';
 elif [[ "$1" =~ 'bash' ]]; then
   rc='bashrc';
