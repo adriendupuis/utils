@@ -20,7 +20,7 @@ function _utils_update {
   if [ "$current" == "$previous" ]; then
     echo "Info: Utils is up-to-date and in $previous";
   else
-    rc="~/.${SHELL##*/}rc";
+    rc=~/.${SHELL##*/}rc;
     if [[ -f $rc ]]; then
       source $rc;
       echo "Info: $rc reloaded.";
