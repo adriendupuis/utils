@@ -26,7 +26,7 @@ if [[ -f ~/utils/rc/$rc ]]; then
     echo "${COMMENT}Utils will be automatically available in next terminals. If Utils is needed in the current one, the following command can be run:";
     echo "source ~/.$rc;${RESET}";
   else
-    echo "Info: ~/utils/$rc already loaded from ~/.$rc.";
+    echo "Info: ~/utils/rc/$rc already loaded from ~/.$rc.";
   fi;
 else
   echo "Info: No “rc” file available for this shell."
