@@ -22,8 +22,10 @@ function _utils_update {
   else
     if [[ -f ~/.${SHELL}rc ]]; then
       source ~/.${SHELL}rc;
+      echo "Info: ~/.${SHELL}rc reloaded.";
     else
       source ~/utils/aliases.sh;
+      echo 'Notice: ~/utils/aliases.sh reloaded. Shell RC file might need a manual reload too.';
     fi;
     echo "Info: Utils updated from $previous to $current.";
   fi
