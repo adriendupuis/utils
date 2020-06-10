@@ -23,5 +23,6 @@ To install, run `git clone https://github.com/adriendupuis/utils.git -b master ~
 TODO
 ----
 
+* Uninstall doc and tool
 * Portage (originally done with macOs Catalina, ensure that it works on other unixoids)
 * Unit tests
