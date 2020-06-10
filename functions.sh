@@ -18,10 +18,14 @@ function _utils_update {
   current=$(_utils_version);
 
   if [ "$current" == "$previous" ]; then
-    echo "Utils is up-to-date and in $previous";
+    echo "Info: Utils is up-to-date and in $previous";
   else
-    source ~/utils/aliases.sh;
-    echo "Utils updated from $previous to $current.";
+    if [[ -f ~/.${SHELL}rc ]]; then
+      source ~/.${SHELL}rc;
+    else
+      source ~/utils/aliases.sh;
+    fi;
+    echo "Info: Utils updated from $previous to $current.";
   fi
 }
 
