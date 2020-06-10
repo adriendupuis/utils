@@ -20,8 +20,8 @@ function _utils_update {
   if [ "$current" == "$previous" ]; then
     echo "Info: Utils is up-to-date and in $previous";
   else
-    if [[ -f ~/.${SHELL}rc ]]; then
-      source ~/.${SHELL}rc;
+    if [[ -f ~/.${SHELL##*/}rc ]]; then
+      source ~/.${SHELL##*/}rc;
       echo "Info: ~/.${SHELL}rc reloaded.";
     else
       source ~/utils/aliases.sh;
