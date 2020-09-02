@@ -6,3 +6,4 @@ alias git-reset='git reset --hard origin/$(git-current-branch)';
 alias git-clean-local-branches='git fetch --quiet && git branch -vv | grep -v  "^\*" | grep "\[.*: gone\]" | cut -d " " -f 3 | xargs git branch --delete';
 
 alias package-version='function _composer_package_version { grep "\"name\": \".*$1\"" -A 5 composer.lock; }; _composer_package_version';
+alias composer-ulm='php -d memory_limit=-1 $(where composer)';
