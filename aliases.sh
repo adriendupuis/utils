@@ -6,4 +6,4 @@ alias git-reset='git reset --hard origin/$(git-current-branch)';
 alias git-clean-local-branches='git fetch --quiet && git branch -vv | grep -v  "^\*" | grep "\[.*: gone\]" | cut -d " " -f 3 | xargs git branch --delete';
 
 alias package-version='function _composer_package_version { parts=($(echo ${1%/} | tr "/" "\n")); if [[ 2 -le $#parts ]]; then vendor="${parts[-2]}/"; else vendor=''; fi; package="$vendor${parts[-1]}"; grep "\"name\": \".*$package\"" -A 5 composer.lock; }; _composer_package_version';
-alias composer-ulm='php -d memory_limit=-1 $(where composer)';
+alias composer-ulm='php -d memory_limit=-1 $(which composer)';
