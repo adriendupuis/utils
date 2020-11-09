@@ -12,3 +12,5 @@ alias git-reset='git reset --hard origin/$(git-current-branch)';
 alias git-clean-local-branches='git fetch --quiet && git branch -vv | grep -v  "^\*" | grep "\[.*: gone\]" | cut -d " " -f 3 | xargs git branch --delete';
 
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
+
+alias gz='gzip --keep';
