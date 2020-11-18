@@ -11,7 +11,7 @@ Install
 
 Utils must be installed in ~/utils.
 
-To install, run `git clone https://github.com/adriendupuis/utils.git -b master ~/utils && ${0//[^a-z]/} ~/utils/install.sh $0;`
+To install, run `git clone https://github.com/adriendupuis/utils.git -b master ~/utils && $0 ~/utils/install.sh $0;`
 
 ### Maintenance
 

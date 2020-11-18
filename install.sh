@@ -1,8 +1,8 @@
 # First installation script (just after having cloned the repository)
 
-if [[ "${1//[^a-z]/}" =~ 'zsh' ]]; then
+if [[ `basename $1` = 'zsh' ]]; then
   rc='zshrc';
-elif [[ "$1" =~ 'bash' ]]; then
+elif [[ `basename $1` = 'bash' ]]; then
   rc='bashrc';
 else
   echo "Error: Unsupported shell.";
