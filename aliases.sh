@@ -13,5 +13,6 @@ alias git-clean-local-branches='git fetch --prune --quiet && git branch -vv | gr
 alias git-force-pull='git fetch --force && git pull --force';
 
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
+alias dsn2cli='function _dsn2cli { php -r "include trim(shell_exec(\"echo ~\")).\"/utils/functions.php\"; echo @dsn2cli(\"$1\").PHP_EOL;"; }; _dsn2cli';
 
 alias gz='gzip --keep';
