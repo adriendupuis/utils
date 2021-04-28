@@ -47,7 +47,7 @@ composer ibexa:setup --platformsh;
 cp .gitignore.dist .gitignore;
 git init;
 # git remote add origin git@github.com:$GITHUB_REPO; # `platform` remote added by next step is enough
-platform project:set-remote $PLATFORM_PROJECT_ID; #
+platform project:set-remote $PLATFORM_PROJECT_ID;
 git remote -v;
 
 git add ./ 2>/dev/null;
@@ -85,27 +85,61 @@ lando init --source cwd --recipe platformsh --platformsh-site "$PLATFORM_PROJECT
 lando start;
 
 if [ 1 -eq 1 ]; then
+  echo "Populate P.sh current project and environment database";
   platform environment:ssh php bin/console ibexa:install;
+  echo "Download/Copy content to local Lando";
   platform db:dump --stdout | lando database main;
   platform mount:download --yes --mount=public/var --target=public/var;
+  #lando php bin/console ibexa:reindex;#No Solr yet
 else
+  echo "Populate local Lando database";
   lando php bin/console ibexa:install;
+  echo "Upload/Copy content to P.sh current project and environment";
   password=$(lando info --service=mysqldb | grep password | sed -E "s/.*password: '(.+)'.*/\1/");
   lando ssh --service mysqldb -c "mysqldump -uuser -p$password main" | platform sql;
   platform mount:upload --yes --source=public/var --mount=public/var;
+  #lando php bin/console ibexa:reindex;#No Solr yet
 fi;
 
 platform environment:ssh php bin/console ibexa:graphql:generate-schema;
 lando php bin/console ibexa:graphql:generate-schema;
 
-# Seems done by deployment hooks
-#platform environment:ssh composer run post-install-cmd;
-#lando composer run post-install-cmd;
 
-lando info --format=table;
+sed -i '' 's/        composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader/        if [ "dev" = "$APP_ENV" ]; then\
+            composer install --dev --no-interaction\
+        else\
+            composer install --no-dev --prefer-dist --no-progress --no-interaction --optimize-autoloader\
+        fi/g' .platform.app.yaml
+
+git add .platform.app.yaml;
+git commit -m '.platform.app.yaml: Add APP_ENV=dev possibility';
+git push;
+
+# https://docs.lando.dev/config/platformsh.html#environment-variables
+echo "  overrides:
+    app:
+      variables:
+        env:
+          APP_ENV: dev" > .lando.yml;
+lando start;
+
+
+vendor/ezsystems/ezplatform-solr-search-engine/bin/generate-solr-config.sh;
+sed -i '' 's/#\(solr:.*\)/\1/' .platform.app.yaml;
+sed -i '' '/solrsearch/,/core: collection1/ s/^#//' .platform/services.yaml;
+git add .platform/configsets/ .platform.app.yaml .platform/services.yaml;
+git commit -m 'Enable Solr';
+git push;
+
+# Avoid having 'http://solr.internal:8080/solr/solrsearch'
+#echo '          SOLR_CORE: collection1' > .lando.yml;
+#echo '          SISO_SEARCH_SOLR_CORE: collection1' > .lando.yml;
+#lando start;
+sed -i '' 's/%solr_core%/collection1/' config/packages/ezplatform_solr.yaml;
+lando php bin/console cache:clear;
+lando php bin/console ibexa:reindex;
+
+platform environment:ssh php bin/console ibexa:reindex;
+
 
 exit 0;
-
-# git checkout -b staging;
-# git push --set-upstream platform staging;
-# git branch -vv;
