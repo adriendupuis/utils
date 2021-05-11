@@ -45,6 +45,13 @@ composer install --no-scripts;
 composer ibexa:setup --platformsh;
 
 cp .gitignore.dist .gitignore;
+if [ 1 -eq 1 ]; then
+  echo 'auth.json' >> .gitignore;
+  platform variable:create --project=$PLATFORM_PROJECT_ID --level=project --name=env:COMPOSER_AUTH \
+    --json=true --visible-runtime=false --sensitive=true --visible-build=true \
+    --value="$(tr -d '\n' < auth.json | sed -e 's/  */ /g')";
+fi;
+
 git init;
 # git remote add origin git@github.com:$GITHUB_REPO; # `platform` remote added by next step is enough
 platform project:set-remote $PLATFORM_PROJECT_ID;
