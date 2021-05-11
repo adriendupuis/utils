@@ -120,7 +120,7 @@ echo "  overrides:
     app:
       variables:
         env:
-          APP_ENV: dev" > .lando.yml;
+          APP_ENV: dev" >> .lando.yml;
 lando start;
 
 
@@ -132,8 +132,8 @@ git commit -m 'Enable Solr';
 git push;
 
 # Avoid having 'http://solr.internal:8080/solr/solrsearch'
-#echo '          SOLR_CORE: collection1' > .lando.yml;
-#echo '          SISO_SEARCH_SOLR_CORE: collection1' > .lando.yml;
+#echo '          SOLR_CORE: collection1' >> .lando.yml;
+#echo '          SISO_SEARCH_SOLR_CORE: collection1' >> .lando.yml;
 #lando start;
 sed -i '' 's/%solr_core%/collection1/' config/packages/ezplatform_solr.yaml;
 lando php bin/console cache:clear;
