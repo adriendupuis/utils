@@ -1,3 +1,4 @@
+# Global core.excludesfile
 .idea/
 .php_cs.cache
 .php-cs-fixer.cache
