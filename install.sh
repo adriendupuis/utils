@@ -17,7 +17,7 @@ RESET=$TXT_RESET;
 
 if [[ -f ~/utils/rc/$rc ]]; then
   if [[ -z `grep "/utils/rc/$rc" ~/.$rc;` ]]; then
-    echo -e "Status: Load ~/utils/rc/$rc into ~/.$rc…";
+    echo "Status: Load ~/utils/rc/${rc} into ~/.${rc}…";
 
     echo '' >> ~/.$rc;
     echo '# https://github.com/adriendupuis/utils' >> ~/.$rc;
