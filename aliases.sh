@@ -14,5 +14,6 @@ alias git-force-pull='git fetch --force && git pull --force';
 alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignore"';
 
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
+alias list-servers='ps -Axo pid,command | grep "php -S\|server:start" | grep -v "grep"';
 
 alias gz='gzip --keep';
