@@ -12,3 +12,5 @@ else
   alias lsd='ls -halF --color';
 fi;
 alias mv-ln='function _mv_ln { mv $1 $2 && ln -s $2 $1 }; _mv_ln';
+
+alias calc='bc <<< ';
