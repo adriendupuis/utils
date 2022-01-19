@@ -17,7 +17,7 @@ alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 
 alias gz='gzip --keep';
 
-if [ 'Darwin' == `uname` ]; then
+if [ 'Darwin' = `uname` ]; then
   # Mac OS X
   alias lsd='ls -GhalF@';
 else
