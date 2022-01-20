@@ -15,6 +15,7 @@ alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignor
 
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 
+alias mv-ln='function _mv_ln { mv $1 $2 && ln -s $2 $1 }; _mv_ln';
 alias gz='gzip --keep';
 
 if [ 'Darwin' = `uname` ]; then
@@ -26,7 +27,5 @@ fi;
 alias grep='grep --color=auto';
 alias grepc='grep --color=always';
 alias less='less --RAW-CONTROL-CHARS';
-
-alias mv-ln='function _mv_ln { mv $1 $2 && ln -s $2 $1 }; _mv_ln';
 
 alias calc='bc -l <<< ';
