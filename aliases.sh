@@ -23,7 +23,8 @@ if [ 'Darwin' = `uname` ]; then
 else
   alias lsd='ls -halF --color';
 fi;
-alias grep='grep --color=always';
+alias grep='grep --color=auto';
+alias grepc='grep --color=always';
 alias less='less --RAW-CONTROL-CHARS';
 
 alias mv-ln='function _mv_ln { mv $1 $2 && ln -s $2 $1 }; _mv_ln';
