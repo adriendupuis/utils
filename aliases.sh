@@ -16,3 +16,11 @@ alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignor
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 
 alias gz='gzip --keep';
+
+alias docker-ps='docker ps --all --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Networks}}\t{{.Ports}}\t{{.Image}}"'
+alias docker-rm='docker rm --force --volumes';
+alias docker-prune='docker system prune --all --force';
+alias docker-comp-env='docker-compose --env-file=$(if [[ -e .env.local ]]; then echo .env.local; else echo .env; fi;)';
+alias docker-comp-rm='docker-compose rm -fv --stop';
+alias docker-comp-www='docker-compose exec -u www-data';
+alias docker-comp-logs='docker-compose logs --follow';
