@@ -24,3 +24,10 @@ alias docker-comp-env='docker-compose --env-file=$(if [[ -e .env.local ]]; then 
 alias docker-comp-rm='docker-compose rm -fv --stop';
 alias docker-comp-www='docker-compose exec -u www-data';
 alias docker-comp-logs='docker-compose logs --follow';
+alias docker-rm-img='_docker_rm'
+alias docker-start-img='_docker_cmd_select start Image';
+alias docker-start-name='_docker_cmd_select start Names';
+alias docker-stop-img='_docker_cmd_select stop Image';
+alias docker-stop-name='_docker_cmd_select stop Names';
+alias docker-rm-img='_docker_cmd_select "rm --force --volumes" Image';
+alias docker-rm-name='_docker_cmd_select "rm --force --volumes" Names';

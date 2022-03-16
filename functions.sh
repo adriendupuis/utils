@@ -43,3 +43,12 @@ function _utils_version {
 
   echo "$version";
 }
+
+function _docker_select {
+  echo $(docker ps --all --format "table {{.ID}} {{.$1}}" | grep $2 | cut -d' ' -f1);
+}
+function _docker_cmd_select {
+  for id in $(_docker_select $2 $3); do
+    eval docker $1 $id;
+  done;
+}
