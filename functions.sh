@@ -43,3 +43,13 @@ function _utils_version {
 
   echo "$version";
 }
+
+function _mysql_empty {
+  tmp=/tmp/_mysql_empty.tmp.sql;
+  db=$(mysql $@ --batch --skip-column-names --execute 'SELECT DATABASE() FROM DUAL;';);
+  echo 'SET FOREIGN_KEY_CHECKS = 0;' > $tmp;
+  mysql $@ --batch --skip-column-names --execute "SELECT concat('DROP TABLE IF EXISTS ', table_name, ';') FROM information_schema.tables WHERE table_schema = '$db';" >> $tmp;
+  echo 'SET FOREIGN_KEY_CHECKS = 1;' >> $tmp;
+  mysql $@ < $tmp;
+  rm -f $tmp;
+}
