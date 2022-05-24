@@ -43,3 +43,13 @@ function _utils_version {
 
   echo "$version";
 }
+
+function _git_delete_tag {
+  if [[ 1 -eq $# ]]; then
+    git tag -d $1;
+    git push --delete origin $1;
+  elif [[ 2 -eq $# ]]; then
+    git tag -d $2;
+    git push --delete $1 $2;
+  fi;
+}
