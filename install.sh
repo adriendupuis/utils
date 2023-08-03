@@ -23,11 +23,11 @@ if [[ -f ~/utils/rc/$rc ]]; then
     echo '# https://github.com/adriendupuis/utils' >> ~/.$rc;
     echo "source \$HOME/utils/rc/$rc" >> ~/.$rc;
 
-    echo "${COMMENT}Notice: Utils will be automatically available in next terminals. If Utils is needed in the current one, the following command can be run:";
-    echo "source ~/.$rc;${RESET}";
+    echo -e "${COMMENT}Notice: Utils will be automatically available in next terminals. If Utils is needed in the current one, the following command can be run:";
+    echo -e "source ~/.$rc;${RESET}";
   else
     echo "Info: ~/utils/rc/$rc already loaded from ~/.$rc.";
   fi;
 else
-  echo "Info: No “rc” file available for this shell."
+  echo -e "${WARNING}Warning: No “rc” file available for this shell.${RESET}"
 fi;
