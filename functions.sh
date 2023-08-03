@@ -1,24 +1,21 @@
 function _utils_update {
   cd ~/utils;
 
+  target=${1:-master};
   previous=$(_utils_version);
 
   git fetch --quiet;
-  if [[ 0 -lt $# ]]; then
-    git checkout --quiet "$1" 2> /dev/null;
-    if [[ 0 -lt $? ]]; then
-      echo "Error: can't checkout $1";
-      return;
-    fi;
-  else
-    git checkout --quiet master 2> /dev/null;
+  git checkout --quiet "$target" 2> /dev/null;
+  if [[ 0 -lt $? ]]; then
+    echo "Error: can't checkout $target";
+    return;
   fi;
   git pull --quiet;
 
   current=$(_utils_version);
 
-  if [ "$current" == "$previous" ]; then
-    echo "Info: Utils is up-to-date and in $previous";
+  if [[ "$current" == "$previous" ]] && [[ '' == "$(git status | grep 'modified:')" ]]; then
+    echo "Info: Utils is up-to-date and at $current";
   else
     rc=~/.${SHELL##*/}rc;
     if [[ -f $rc ]]; then
