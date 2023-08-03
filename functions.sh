@@ -42,6 +42,8 @@ function _utils_version {
   fi;
 
   echo "$version";
+
+  cd - > /dev/null;
 }
 
 function _git_delete_tag {
