@@ -20,3 +20,4 @@ alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 alias gz='gzip --keep';
 
 alias textedit='open -e';
+alias gimp='open -a Gimp'
