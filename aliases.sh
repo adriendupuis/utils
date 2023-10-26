@@ -18,3 +18,5 @@ alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignor
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 
 alias gz='gzip --keep';
+
+alias textedit='open -a TextEdit';
