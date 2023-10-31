@@ -4,6 +4,8 @@ alias utils-install='utils-update';
 alias utils-update='_utils_update';
 alias utils-version='_utils_version';
 
+alias ssh-forward='ssh-add -K ~/.ssh/id_rsa; ssh -A';
+
 alias git-graph='git log --all --graph --date-order --oneline --decorate';
 alias git-current-branch='git rev-parse --abbrev-ref HEAD';
 alias git-current-commit='git rev-parse --verify --short HEAD';
