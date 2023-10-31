@@ -18,3 +18,6 @@ alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignor
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 
 alias gz='gzip --keep';
+
+alias pip='pip3';
+alias mkdocs="$(find ~/Library/Python/*/bin -name mkdocs)";
