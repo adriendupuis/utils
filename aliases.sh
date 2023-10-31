@@ -16,5 +16,6 @@ alias git-delete-tag='_git_delete_tag';
 alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignore"';
 
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
+alias dsn2cli='function _dsn2cli { php -r "include trim(shell_exec(\"echo ~\")).\"/utils/functions.php\"; echo @dsn2cli(\"$1\").PHP_EOL;"; }; _dsn2cli';
 
 alias gz='gzip --keep';
