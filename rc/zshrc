@@ -1,0 +1,2 @@
+setopt interactivecomments; # Allow to have a comment in a command line; Avoid error like "zsh: command not found: #"
+source $HOME/utils/aliases.sh;
