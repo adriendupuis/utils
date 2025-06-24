@@ -15,6 +15,9 @@ alias git-force-pull='git fetch --force && git pull --force';
 alias git-delete-tag='_git_delete_tag';
 alias git-global-ignore='git config --global core.excludesfile "~/utils/gitignore"';
 
+alias package-version='function _composer_package_version { parts=($(echo ${1%/} | tr "/" "\n")); if [[ 2 -le $#parts ]]; then vendor="${parts[-2]}/"; else vendor=''; fi; package="$vendor${parts[-1]}"; grep "\"name\": \".*$package\"" -A 5 composer.lock; }; _composer_package_version';
+alias composer-ulm='php -d memory_limit=-1 $(which composer)';
+
 alias sf-cs-fix='php-cs-fixer fix --rules=@Symfony';
 
 alias gz='gzip --keep';
